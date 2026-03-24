@@ -14,7 +14,7 @@ const NOUS_API = "https://inference-api.nousresearch.com/v1/chat/completions";
 export default function InterviewPage() {
   const { address, isConnected, connect } = useWallet();
   const [badges, setBadges] = useState<BadgeRecord[]>([]);
-  const [apiKey, setApiKey] = useState("");
+  const [apiKey] = useState(process.env.NEXT_PUBLIC_AI_KEY || "");
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -92,7 +92,7 @@ Start with a warm professional greeting, mention their badge performance, and as
         <div className="text-center max-w-sm px-6">
           <Bot className="h-16 w-16 text-lo mx-auto mb-4"/>
           <h2 className="font-display text-2xl font-bold text-hi mb-3">AI Interview Prep</h2>
-          <p className="text-mid mb-6">Practice interviews powered by Hermes AI, personalized to your skill badges.</p>
+          <p className="text-mid mb-6">Practice interviews powered by COGNIFY AI, personalized to your skill badges.</p>
           <button onClick={connect} className="px-7 py-3 rounded-lg bg-brand text-white font-medium shadow-brand hover:bg-brand-dark transition-all">Connect Wallet</button>
         </div>
       </div>
@@ -107,7 +107,7 @@ Start with a warm professional greeting, mention their badge performance, and as
           <motion.div initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} className="space-y-5">
             <div>
               <p className="text-xs font-mono text-brand-light uppercase tracking-widest mb-2">AI Interview Prep</p>
-              <h1 className="font-display text-4xl font-bold text-hi mb-2">Practice with Hermes AI.</h1>
+              <h1 className="font-display text-4xl font-bold text-hi mb-2">Practice with COGNIFY AI.</h1>
               <p className="text-mid">Get a personalized mock interview based on your verified COGNIFY badges.</p>
             </div>
 
@@ -134,17 +134,12 @@ Start with a warm professional greeting, mention their badge performance, and as
                   ))}
                 </select>
               </div>
-              <div>
-                <label className="text-xs text-lo font-mono block mb-1.5">Nous Portal API key</label>
-                <input type="password" value={apiKey} onChange={e=>setApiKey(e.target.value)}
-                  placeholder="your-api-key"
-                  className="w-full px-3 py-2.5 bg-surface border border-border rounded-xl text-hi font-mono text-sm placeholder:text-lo focus:border-brand/50 focus:outline-none"/>
-              </div>
+
             </div>
 
             <motion.button whileHover={{scale:1.01,y:-1}} onClick={startInterview}
               className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-brand text-white font-display font-bold shadow-brand hover:bg-brand-dark transition-all">
-              <Sparkles className="h-5 w-5"/>Start AI Interview
+              <Sparkles className="h-5 w-5"/>Start COGNIFY AI Interview
             </motion.button>
           </motion.div>
         ) : (
@@ -154,7 +149,7 @@ Start with a warm professional greeting, mention their badge performance, and as
                 <Bot className="h-5 w-5 text-brand-light"/>
               </div>
               <div>
-                <p className="font-display font-bold text-hi">Hermes AI Interviewer</p>
+                <p className="font-display font-bold text-hi">COGNIFY AI Interviewer</p>
                 <p className="text-xs text-lo">{role} Interview · Personalized to your badges</p>
               </div>
               <div className="ml-auto flex items-center gap-1.5 text-xs text-success">
