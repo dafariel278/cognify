@@ -13,9 +13,12 @@ export function Navbar() {
   const path = usePathname();
 
   const navLinks = [
-    { href: "/#assessments", label: "Assessments" },
-    { href: "/#how-it-works", label: "How it works" },
-    { href: "/verify", label: "Verify" },
+    { href: "/#assessments",  label: "Assessments" },
+    { href: "/jobs",          label: "Jobs" },
+    { href: "/leaderboard",   label: "Leaderboard" },
+    { href: "/interview",     label: "AI Interview" },
+    { href: "/analytics",     label: "Analytics" },
+    { href: "/verify",        label: "Verify" },
   ];
 
   return (
